@@ -80,33 +80,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\redButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Guy 1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\star.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogLel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogIcon2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogIconLeft.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogIconRight.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\frogIconDown.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\frogUp.png" />
   </ItemGroup>
   <ItemGroup>

@@ -41,28 +41,17 @@ namespace AnimatedGame
         List<int> logRowThree = new List<int>();
         List<int> logRowFour = new List<int>();
 
+        public Form1()
+        {
+            InitializeComponent();
+            StartGame();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-        }
-
-        public Form1()
-        {
-            InitializeComponent();
-            rowHeight = this.Height / 11;
-            columnWidth = this.Width / 16;
-            yFrog = 10 * rowHeight;
-            xFrog = 8 * columnWidth;
-            jumpWatch.Start();
-            carRowOne.AddRange(new int[] { -carOneLength, 3 * columnWidth, 6 * columnWidth, 9 * columnWidth, 12 * columnWidth, 15 * columnWidth });
-            carRowTwo.AddRange(new int[] { 1 * columnWidth, 5 * columnWidth, 9 * columnWidth, 13 * columnWidth });
-            carRowThree.AddRange(new int[] { 0, 3 * columnWidth, 4 * columnWidth, 7 * columnWidth, 10 * columnWidth, 11 * columnWidth, 14 * columnWidth, 15 * columnWidth });
-            carRowFour.AddRange(new int[] { 0, 1 * columnWidth, 2 * columnWidth, 5 * columnWidth, 6 * columnWidth, 7 * columnWidth, 10 * columnWidth, 11 * columnWidth, 12 * columnWidth, 14 * columnWidth });
-            logRowOne.AddRange(new int[] { });
-            logRowTwo.AddRange(new int[] { });
-            logRowThree.AddRange(new int[] { });
-            logRowFour.AddRange(new int[] { });
+            
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -101,11 +90,12 @@ namespace AnimatedGame
                 rightLook = false;
             }
 
+            //update cars
             UpdateObstacles(carRowOne, carOneSpeed, carOneLength);
             UpdateObstacles(carRowTwo, carTwoSpeed, carTwoLength);
             UpdateObstacles(carRowThree, carThreeSpeed, carThreeLength);
             UpdateObstacles(carRowFour, carFourSpeed, carFourLength);
-
+            //update logs
             UpdateObstacles(logRowOne, logOneSpeed, logOneLength);
             UpdateObstacles(logRowTwo, logTwoSpeed, logTwoLength);
             UpdateObstacles(logRowThree, logThreeSpeed, logThreeLength);
@@ -113,11 +103,12 @@ namespace AnimatedGame
 
             Rectangle frogRec = new Rectangle(xFrog, yFrog, FROGWIDTH, FROGHEIGHT);
 
+            //check car collisions
             DetectCollisions(carRowOne, rowHeight * 9, carOneLength, rowHeight, frogRec);
             DetectCollisions(carRowTwo, rowHeight * 8, carTwoLength, rowHeight, frogRec);
             DetectCollisions(carRowThree, rowHeight * 7, carThreeLength, rowHeight, frogRec);
             DetectCollisions(carRowFour, rowHeight * 6, carFourLength, rowHeight, frogRec);
-
+            //check log collisions
             DetectCollisions(logRowOne, rowHeight * 4, logOneLength, logOneSpeed, rowHeight, frogRec);
             DetectCollisions(logRowTwo, rowHeight * 3, logTwoLength, logTwoSpeed, rowHeight, frogRec);
             DetectCollisions(logRowThree, rowHeight * 2, logThreeLength, logThreeSpeed, rowHeight, frogRec);
@@ -128,20 +119,25 @@ namespace AnimatedGame
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = this.CreateGraphics();
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
-            DrawBackground(g);
+            DrawBackground(e.Graphics);
 
-            DrawObstacles(carRowOne, rowHeight * 9, g, Properties.Resources.car1Right);
-            DrawObstacles(carRowTwo, rowHeight * 8, g, Properties.Resources.car2Right);
-            DrawObstacles(carRowThree, rowHeight * 7, g, Properties.Resources.car3Left);
-            DrawObstacles(carRowFour, rowHeight * 6, g, Properties.Resources.car2Right);
-
-            if (leftLook == true) { g.DrawImage(Properties.Resources.frogLeft, xFrog, yFrog); }
-            else if (rightLook == true) { g.DrawImage(Properties.Resources.frogRight, xFrog, yFrog); }
-            else if (downLook == true) { g.DrawImage(Properties.Resources.frogDown, xFrog, yFrog); }
-            else { g.DrawImage(Properties.Resources.frogUp, xFrog, yFrog); }
+            //draw frog
+            if (leftLook == true) { e.Graphics.DrawImage(Properties.Resources.frogLeft, xFrog, yFrog); }
+            else if (rightLook == true) { e.Graphics.DrawImage(Properties.Resources.frogRight, xFrog, yFrog); }
+            else if (downLook == true) { e.Graphics.DrawImage(Properties.Resources.frogDown, xFrog, yFrog); }
+            else { e.Graphics.DrawImage(Properties.Resources.frogUp, xFrog, yFrog); }
+            //draw cars
+            DrawObstacles(carRowOne, rowHeight * 9, e.Graphics, Properties.Resources.car1Right);
+            DrawObstacles(carRowTwo, rowHeight * 8, e.Graphics, Properties.Resources.car2Right);
+            DrawObstacles(carRowThree, rowHeight * 7, e.Graphics, Properties.Resources.car3Left);
+            DrawObstacles(carRowFour, rowHeight * 6, e.Graphics, Properties.Resources.car2Right);
+            //draw logs
+            DrawObstacles(logRowOne, rowHeight * 4, e.Graphics);
+            DrawObstacles(logRowTwo, rowHeight * 3, e.Graphics);
+            DrawObstacles(logRowThree, rowHeight * 2, e.Graphics);
+            DrawObstacles(logRowFour, rowHeight, e.Graphics);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -180,6 +176,29 @@ namespace AnimatedGame
                     downArrowDown = false;
                     break;
             }
+        }
+
+        public void StartGame()
+        {
+            //create columns and rows
+            rowHeight = this.Height / 11;
+            columnWidth = this.Width / 16;
+
+            //set frog location
+            yFrog = 10 * rowHeight;
+            xFrog = 8 * columnWidth;
+            //start frog jump delay
+            jumpWatch.Start();
+
+            //add values to lists
+            carRowOne.AddRange(new int[] { -carOneLength, 3 * columnWidth, 6 * columnWidth, 9 * columnWidth, 12 * columnWidth, 15 * columnWidth });
+            carRowTwo.AddRange(new int[] { 1 * columnWidth, 5 * columnWidth, 9 * columnWidth, 13 * columnWidth });
+            carRowThree.AddRange(new int[] { 0, 3 * columnWidth, 4 * columnWidth, 7 * columnWidth, 10 * columnWidth, 11 * columnWidth, 14 * columnWidth, 15 * columnWidth });
+            carRowFour.AddRange(new int[] { 0, 1 * columnWidth, 2 * columnWidth, 5 * columnWidth, 6 * columnWidth, 7 * columnWidth, 10 * columnWidth, 11 * columnWidth, 12 * columnWidth, 14 * columnWidth });
+            logRowOne.AddRange(new int[] { });
+            logRowTwo.AddRange(new int[] { });
+            logRowThree.AddRange(new int[] { });
+            logRowFour.AddRange(new int[] { });
         }
 
         public void DrawBackground(Graphics g)
