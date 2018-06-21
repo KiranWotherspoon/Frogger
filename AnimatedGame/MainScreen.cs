@@ -25,6 +25,7 @@ namespace AnimatedGame
 
             GameScreen gs = new GameScreen();
             f.Controls.Add(gs);
+            gs.Focus();
             Cursor.Hide();
         }
 
@@ -41,6 +42,7 @@ namespace AnimatedGame
 
             HowToPlay htp = new HowToPlay();
             f.Controls.Add(htp);
+            htp.Focus();
             Cursor.Hide();
         }
     }

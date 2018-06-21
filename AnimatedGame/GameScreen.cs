@@ -316,6 +316,7 @@ namespace AnimatedGame
                     f.Controls.Remove(this);
                     MainScreen ms = new MainScreen();
                     f.Controls.Add(ms);
+                    ms.Focus();
                     musicPlayer.Stop();
                     break;
             }
@@ -373,6 +374,8 @@ namespace AnimatedGame
 
             //start the background music
             musicPlayer.PlayLooping();
+
+            Form1.service.startGame();
         }
 
         public void Death()
@@ -406,6 +409,7 @@ namespace AnimatedGame
                 f.Controls.Remove(this);
                 MainScreen ms = new MainScreen();
                 f.Controls.Add(ms);
+                Form1.service.endGame(score);
             }
             else //if they do
             {        

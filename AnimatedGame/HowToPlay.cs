@@ -28,6 +28,7 @@ namespace AnimatedGame
 
                     MainScreen ms = new MainScreen();
                     f.Controls.Add(ms);
+                    ms.Focus();
                     break;
             }
         }
