@@ -61,6 +61,15 @@ namespace AnimatedGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream backMusic {
+            get {
+                return ResourceManager.GetStream("backMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap car1Left {
@@ -123,6 +132,16 @@ namespace AnimatedGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap deathIcon {
+            get {
+                object obj = ResourceManager.GetObject("deathIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap frogDown {
             get {
                 object obj = ResourceManager.GetObject("frogDown", resourceCulture);
@@ -156,6 +175,73 @@ namespace AnimatedGame.Properties {
         internal static System.Drawing.Bitmap frogUp {
             get {
                 object obj = ResourceManager.GetObject("frogUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream hornSound {
+            get {
+                return ResourceManager.GetStream("hornSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream jumpSound {
+            get {
+                return ResourceManager.GetStream("jumpSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mosquitoBadIcon {
+            get {
+                object obj = ResourceManager.GetObject("mosquitoBadIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mosquitoIcon {
+            get {
+                object obj = ResourceManager.GetObject("mosquitoIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream splashSound {
+            get {
+                return ResourceManager.GetStream("splashSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap turtleIconLeft {
+            get {
+                object obj = ResourceManager.GetObject("turtleIconLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap turtleIconRight {
+            get {
+                object obj = ResourceManager.GetObject("turtleIconRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
